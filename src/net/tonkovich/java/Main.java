@@ -1,6 +1,8 @@
 package net.tonkovich.java;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,34 +12,37 @@ public class Main {
     Scanner scan = new Scanner(System.in); 
     Discount disc = new Discount();
     
-    List<DiscountOptions> pDiscounts = new ArrayList<DiscountOptions>() {{
+    List<DiscountOptions> discounts = new ArrayList<DiscountOptions>() {{
       add(new Discount10());
       add(new Discount20());
     }};
     
     boolean cont = true;
+    double total = 0.0;
     
     while(cont) {
       System.out.println("Unit Price ($)");
-      double unitPrice = scan.nextDouble();
+      double unitPrice = getUnitPrice(scan); // get UnitPrice
       
       System.out.println("Quantity");
-      int quantity = scan.nextInt();
+      int quantity = getQuantity(scan); // get Quantity of item
       
       System.out.println("Discounts: ");
       
       int i = 1;
-      for (DiscountOptions pD : pDiscounts) {
-        System.out.println(i + ". " + pD.toString());
+      for (DiscountOptions d : discounts) {
+        System.out.println(i + ". " + d.toString()); // Print out discount options
         i++;
       }
       int selection = scan.nextInt() -1 ;
       
-      disc.setPd(pDiscounts.get(selection)); // Assign behavior
+      disc.setDiscount(discounts.get(selection)); // Assign behavior
       
-      System.out.print("Total: ");
-      System.out.printf("%.2f \n", disc.calculate(unitPrice, quantity));
-      System.out.println("Another Discount? (Y/N)");
+      total += disc.calculate(unitPrice, quantity);
+      
+      System.out.println("Total: ");
+      System.out.printf("%.2f \n", disc.calculate(unitPrice, quantity)); // Print out adjusted price
+      System.out.println("Another item? (Y/N)");
       
       String answer = scan.next();
       
@@ -46,4 +51,30 @@ public class Main {
     }
     scan.close();
   }
+  
+  public static double getUnitPrice(Scanner scan) {
+  	double result = 0.0; // Default
+  	try {
+  		result = scan.nextDouble();
+  	} 
+  	catch (InputMismatchException e) {
+  		System.out.println("Incorrect number format: Try again");
+  		String result2 = scan.nextLine();
+  		getUnitPrice(new Scanner(result2));
+  	}
+  	return result;
+  }
+  
+  public static int getQuantity(Scanner scan) {
+  	int result = 0;
+  	try {
+  		result = scan.nextInt();
+  	} 
+  	catch (InputMismatchException e) {
+  		System.out.println("Incorrect number format: Try again");
+  		getQuantity(new Scanner(scan.next()));
+  	}
+  	return result;
+  }
+  
 }

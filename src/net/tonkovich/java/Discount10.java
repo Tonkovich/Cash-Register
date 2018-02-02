@@ -4,7 +4,7 @@ public class Discount10 implements DiscountOptions {
 
   private double percentage = 0.10;
   
-  public double calculate(double price, double quantity) {
+  public double calculate(double price, int quantity) {
     double original = price*quantity;
     double subtract = original * percentage;
     return original - subtract;

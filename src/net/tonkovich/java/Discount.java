@@ -2,17 +2,17 @@ package net.tonkovich.java;
 
 public class Discount {
   
-  DiscountOptions pd;
+  DiscountOptions d;
   
-  double calculate(double price, double quantity) {
-    return pd.calculate(price, quantity);
+  public double calculate(double price, int quantity) {
+    return d.calculate(price, quantity);
   }
   
   public String toString() {
-    return pd.toString();
+    return d.toString();
   }
   
-  public void setPd(DiscountOptions newPD) {
-    pd = newPD;
+  public void setDiscount(DiscountOptions newD) {
+    d = newD;
   }
 }
