@@ -1,7 +1,18 @@
 package net.tonkovich.java;
 
-public interface Discount {
-  double calculate(double price, double quantity);
+public class Discount {
   
-  String toString();
+  PercentageDiscount pd;
+  
+  double calculate(double price, double quantity) {
+    return pd.calculate(price, quantity);
+  }
+  
+  public String toString() {
+    return pd.toString();
+  }
+  
+  public void setPd(PercentageDiscount newPD) {
+    pd = newPD;
+  }
 }

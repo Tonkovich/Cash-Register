@@ -8,6 +8,7 @@ public class Main {
 
   public static void main(String[] args) {
     Scanner scan = new Scanner(System.in); 
+    Discount disc = new Discount();
     
     List<PercentageDiscount> pDiscounts = new ArrayList<PercentageDiscount>() {{
       add(new Discount10());
@@ -32,8 +33,10 @@ public class Main {
       }
       int selection = scan.nextInt() -1 ;
       
+      disc.setPd(pDiscounts.get(selection)); // Assign behavior
+      
       System.out.print("Total: ");
-      System.out.printf("%.2f \n", pDiscounts.get(selection).calculate(unitPrice, quantity));
+      System.out.printf("%.2f \n", disc.calculate(unitPrice, quantity));
       System.out.println("Another Discount? (Y/N)");
       
       String answer = scan.next();
