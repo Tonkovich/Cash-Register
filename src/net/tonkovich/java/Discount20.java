@@ -1,6 +1,6 @@
 package net.tonkovich.java;
 
-public class Discount20 implements PercentageDiscount {
+public class Discount20 implements DiscountOptions {
   
   private double percentage = 0.20;
 

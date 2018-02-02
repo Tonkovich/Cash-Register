@@ -10,7 +10,7 @@ public class Main {
     Scanner scan = new Scanner(System.in); 
     Discount disc = new Discount();
     
-    List<PercentageDiscount> pDiscounts = new ArrayList<PercentageDiscount>() {{
+    List<DiscountOptions> pDiscounts = new ArrayList<DiscountOptions>() {{
       add(new Discount10());
       add(new Discount20());
     }};
@@ -27,7 +27,7 @@ public class Main {
       System.out.println("Discounts: ");
       
       int i = 1;
-      for(PercentageDiscount pD : pDiscounts) {
+      for (DiscountOptions pD : pDiscounts) {
         System.out.println(i + ". " + pD.toString());
         i++;
       }
@@ -41,7 +41,7 @@ public class Main {
       
       String answer = scan.next();
       
-      if(!answer.equalsIgnoreCase("y"))
+      if (!answer.equalsIgnoreCase("y"))
         cont = false;
     }
     scan.close();
