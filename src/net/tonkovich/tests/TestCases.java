@@ -53,17 +53,16 @@ class TestCases {
 
   @Test
   void totalTest() {
-    dis.setDiscount(new Scanner("2"), dList);
-
     dis.setUnitPrice(new Scanner("2.52")); // Assign test values
     dis.setQuantity(new Scanner("7"));
+    dis.setDiscount(new Scanner("2"), dList);
 
-    dis.setDiscount(new Scanner("1"), dList);
+    double total = dis.calculate();
 
     dis.setUnitPrice(new Scanner("3")); // Assign test values
     dis.setQuantity(new Scanner("2"));
+    dis.setDiscount(new Scanner("1"), dList);
 
-    double total = dis.calculate();
     total += dis.calculate();
 
     DecimalFormat df = new DecimalFormat("#.##");
