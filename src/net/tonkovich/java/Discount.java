@@ -92,8 +92,4 @@ public class Discount {
       setQuantity(scan);  // Recursive call
     }
   }
-
-  public String toString() {
-    return d.toString();
-  }
 }
