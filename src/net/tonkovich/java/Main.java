@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Main class holds the procedure code for the cash register.
+ */
 public class Main {
 
   private static Discount disc = Discount.getInstance();
 
-
   /**
-   * Main class holds the procedure code for the cash register.
+   * Procedure code for the cash register.
    *
    * @param args Command line arguments
    */

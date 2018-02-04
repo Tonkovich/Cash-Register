@@ -3,8 +3,10 @@ package net.tonkovich.java;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Singleton that parses and holds data pertaining to user input.
+ */
 public class Discount {
-
 
   private static Discount instance = new Discount();
   private DiscountOptions d;
@@ -14,7 +16,6 @@ public class Discount {
   private Discount() {
     // Change constructor to private
   }
-
 
   public static Discount getInstance() {
     return instance;
